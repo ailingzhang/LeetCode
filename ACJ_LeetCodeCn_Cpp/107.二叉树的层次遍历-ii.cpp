@@ -57,28 +57,28 @@ class Solution
         if (root == nullptr) {
             return ans;
         }
-        queue<TreeNode*> this_level;
+        queue<TreeNode *> q;
+        q.push(root);
 
-
-        this_level.push(root);
-
-        while (this_level.size() != 0) {
-            queue<TreeNode*> next_level;
+        while (q.size() != 0) {
             vector<int> this_level_ans;
 
-            while(this_level.size() != 0){
-                TreeNode* pTemp = this_level.front();
+            int this_level_node_cnt = q.size();
+            for (int i = 0; i < this_level_node_cnt; i++)
+            {
+                TreeNode *pTemp = q.front();
                 this_level_ans.push_back(pTemp->val);
-                if (pTemp->left != nullptr) {
-                    next_level.push(pTemp->left);
+                if (pTemp->left != nullptr)
+                {
+                    q.push(pTemp->left);
                 }
-                if (pTemp->right != nullptr) {
-                    next_level.push(pTemp->right);
+                if (pTemp->right != nullptr)
+                {
+                    q.push(pTemp->right);
                 }
-                this_level.pop();
+                q.pop();
             }
             ans.insert(ans.begin(), this_level_ans);
-            this_level = next_level;
         }
 
         return ans;
