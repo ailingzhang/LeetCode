@@ -32,7 +32,7 @@
 #include <algorithm>
 using namespace std;
 
-int num(int x,int p){
+/* int num(int x,int p){
     int y=0,product=1;
     while(x!=0){
         y=y+(x%10)*product;
@@ -56,8 +56,8 @@ string num_p(long long y){
     }while(y!=0);
     //reverse(z.begin(),z.end());
     return z;
-}
-class Solution {
+} */
+/* class Solution {
 public:
     string addBinary(string a, string b) {
         //string c;
@@ -66,6 +66,33 @@ public:
         long long cc=num(aa,2)+num(bb,2);
         return num_p(cc);
         }
-    };
+    }; */
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        //string c;
+        int count=0;//
+        int arr=0;
+        int i=0;
+        string s;
+        while(i<a.size()||i<b.size()||arr!=0){
+            int aa,bb;
+            if(i<a.size()){
+                aa=a[a.size()-i-1]-'0';
+            }
+            else aa=0;
+            if(i<b.size()){
+                bb=b[b.size()-i-1]-'0';
+            }
+            else bb=0; 
+            count=aa+bb+arr;
+            char c=count%2+'0';
+            arr=count/2;
+            s=c+s;
+            i++;
+        }
 
+        return s;
+        }
+    };
 
