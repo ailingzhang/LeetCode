@@ -1,0 +1,8 @@
+.vscode
+*.dSYM
+
+tempCodeRunnerFile.cpp
+*
+
+!*.cpp
+tempCodeRunnerFile.cpp
