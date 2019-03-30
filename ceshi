@@ -1,0 +1,41 @@
+#include<iostream>
+#include<vector>
+#include<string>
+#include <algorithm>
+using namespace std;
+
+int num(int x,int p){
+    int y=0,product=1;
+    while(x!=0){
+        y=y+(x%10)*product;
+        x=x/10;
+        product=product*p;
+    }
+    return y;
+
+}
+
+string num_p(long long y){
+    //long long z=0;
+    //long long p=1;
+    int num=0;
+    string z;
+    do{
+        z[num++]=y%2+'0';
+        y=y/2;
+        //p=p*10;
+    }while(y!=0);
+    reverse(z.begin(),z.end());
+    return z;
+}
+
+int main(){
+    string a,b;
+    cin>>a>>b;
+    long long aa=atoi(a.c_str());
+    long long bb=atoi(b.c_str());
+    long long cc=num(aa,2)+num(bb,2);
+    cout<<num_p(cc)<<endl;
+}
+
+
