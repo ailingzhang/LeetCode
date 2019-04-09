@@ -52,7 +52,7 @@ public:
             int j;
             //flag=true;
             for(j=0;j<strs.size()-1;j++){
-                if(strs[j][i]!=strs[j+1][i]){//刚开始携程了strs[i][j]!=strs[i][j+1]注意
+                if(strs[j][i]!=strs[j+1][i]){//刚开始写成了strs[i][j]!=strs[i][j+1]注意
                     flag=false;
                     break;//大姐，你怎么老是把break写在前面，害我检查好久
                 }

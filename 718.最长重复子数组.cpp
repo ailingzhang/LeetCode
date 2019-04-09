@@ -36,43 +36,22 @@
 #include<vector>
 #include<cmath>
 #include<algorithm>
+#include<string>
 using namespace std;
 class Solution {
 public:
     int findLength(vector<int>& A, vector<int>& B) {
-        //int dp[1000][1000];//直接二维数组装不下
-/*         vector<vector<int>> dp;
-        for(int i=0;i<A.size()+1;i++){
-            for(int j=0;j<B.size()+1;j++){
-                dp[i][j]=0;
-            }
-        } */ //只是赋值，并没有设置vector的行列数，用下面的方法。
         vector<vector<int> > dp(A.size() + 1, vector<int>(B.size() + 1, 0));
-/*         for(int i=0;i<A.size();i++){
-            dp[i][0]=0;
-        }
-        for(int j=0;j<B.size();j++){
-            dp[0][j]=0;
-        } */
-        int *sa=new int[A.size()+1];
-        int *sb=new int[B.size()+1];
-        for(int i=1;i<A.size()+1;i++){
-            sa[i]=A[i-1];
-        }
-        for(int i=1;i<B.size()+1;i++){
-            sb[i]=B[i-1];
-        }
-        //记录连续的重复子数组，连续！
         int res=0;
-        for(int i=1;i<A.size()+1;i++){
-            for(int j=1;j<B.size()+1;j++){
-                if(sa[i]==sb[j]) dp[i][j]=dp[i-1][j-1]+1;
-                //else dp[i][j]=max(dp[i][j-1],dp[i-1][j]);
+        for(int i=1;i<=A.size();i++){
+            for(int j=1;j<=B.size();j++){
+                if(A[i-1]==B[j-1]) dp[i][j]=dp[i-1][j-1]+1;
                 res=max(dp[i][j],res);
             }
         }
-        return res;  
-
+        return res;
     }
 };
+
+
 
